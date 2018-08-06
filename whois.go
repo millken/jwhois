@@ -28,10 +28,12 @@ func Whois(data string) (body []byte, err error) {
 	}
 
 	//check redirect whois
-	if re, ok := RedirectServer[ri.WhoisServer]; ok {
-		ref := re.FindSubmatch(body)
-		if len(ref) > 1 {
-			return WhoisByServer(data, strings.TrimSpace(string(ref[1])))
+	if regexps, ok := RedirectServer[ri.WhoisServer]; ok {
+		for _, re := range regexps {
+			ref := re.FindSubmatch(body)
+			if len(ref) > 1 {
+				return WhoisByServer(data, strings.TrimSpace(string(ref[1])))
+			}
 		}
 	}
 	return body, err

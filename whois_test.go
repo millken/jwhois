@@ -30,3 +30,19 @@ func TestWhoisARIN(t *testing.T) {
 		return
 	}
 }
+
+func TestWhoisIP(t *testing.T) {
+	_, err := Whois("223.35.2.2")
+	if err != nil {
+		t.Error("whois failed with error:", err)
+		return
+	}
+}
+
+func TestWhoisIPV6(t *testing.T) {
+	_, err := Whois("2404:6800:4005:806::200e")
+	if err != nil {
+		t.Error("whois failed with error:", err)
+		return
+	}
+}

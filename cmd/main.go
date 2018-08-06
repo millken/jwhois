@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	data, err := jwhois.Whois("INTERNET-BLK-A2HOS-2")
+	data, err := jwhois.Whois("278")
 	if err != nil {
 		fmt.Println(err)
 		return
